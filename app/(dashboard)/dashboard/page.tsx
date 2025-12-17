@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation'
 import { getDashboardSummary, getCategoryBreakdown, getRecentTransactions } from '@/lib/db/dashboard'
 import type { TimeFilter } from '@/lib/utils/date'
 import SummaryCards from '@/components/dashboard/summary-cards'
-import TimeFilter from '@/components/dashboard/time-filter'
+import TimeFilterComponent from '@/components/dashboard/time-filter'
 import CategoryBreakdownChart from '@/components/dashboard/category-breakdown-chart'
 import RecentTransactions from '@/components/dashboard/recent-transactions'
 import type { Metadata } from 'next'
@@ -38,7 +38,7 @@ export default async function DashboardPage({
         <h1 className="text-2xl font-bold">Tổng quan</h1>
       </div>
 
-      <TimeFilter />
+      <TimeFilterComponent />
 
       <SummaryCards summary={summary} />
 
