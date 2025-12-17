@@ -73,7 +73,7 @@ export default async function TransactionsPage({
           {page > 1 ? (
             <a
               href={`?page=${page - 1}`}
-              className="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+              className="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-gray-900"
             >
               ← Trang trước
             </a>
@@ -88,7 +88,7 @@ export default async function TransactionsPage({
           {hasMore ? (
             <a
               href={`?page=${page + 1}`}
-              className="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+              className="px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-gray-900"
             >
               Trang sau →
             </a>

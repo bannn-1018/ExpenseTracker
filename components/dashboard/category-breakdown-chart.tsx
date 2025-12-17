@@ -67,7 +67,7 @@ export default function CategoryBreakdownChart({ data, loading = false }: Catego
               className="w-3 h-3 rounded-full flex-shrink-0"
               style={{ backgroundColor: entry.color }}
             />
-            <span className="truncate">{entry.payload.icon} {entry.value}</span>
+            <span className="truncate text-gray-900">{entry.payload.icon} {entry.value}</span>
           </div>
         ))}
       </div>

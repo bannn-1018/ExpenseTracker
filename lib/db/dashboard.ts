@@ -118,7 +118,7 @@ export async function getRecentTransactions(
     id: row.id,
     amount: parseFloat(row.amount),
     type: row.type,
-    date: row.date,
+    date: row.date instanceof Date ? row.date.toISOString() : row.date,
     name: row.name,
     categoryId: row.category_id,
     categoryName: row.category_name,

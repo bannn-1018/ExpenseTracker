@@ -76,7 +76,7 @@ export async function getTransactions(
       category_id: row.category_id,
       amount: parseFloat(row.amount),
       type: row.type,
-      date: row.date,
+      date: row.date instanceof Date ? row.date.toISOString() : row.date,
       name: row.name,
       note: row.note,
       created_at: row.created_at,
