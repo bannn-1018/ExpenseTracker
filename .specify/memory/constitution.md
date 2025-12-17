@@ -1,50 +1,143 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# ExpenseTracker Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Type Safety First
+TypeScript must be used throughout the entire application. All components, utilities, API routes, and data models must be fully typed. No `any` types allowed except in rare, documented exceptions. Database schemas must have corresponding TypeScript types/interfaces.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Server Components by Default
+Leverage Next.js App Router with React Server Components as the default. Client components must be explicitly marked with `'use client'` and used only when necessary (user interactions, browser APIs, state management). This ensures optimal performance and SEO.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. API Route Protection
+All API routes must implement proper authentication and authorization. User data isolation is mandatory - users can only access their own expense records. Input validation required on all endpoints using validation libraries (Zod or similar).
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Database Best Practices
+Use Vercel Postgres or Vercel KV for data storage. Database queries must be optimized with proper indexing. Implement database connection pooling. Use prepared statements or ORMs (Prisma/Drizzle) to prevent SQL injection. Schema migrations must be version-controlled.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Mobile-First & Responsive Design (NON-NEGOTIABLE)
+Mobile-first approach is mandatory. All features must be designed and tested on mobile devices first (320px - 428px width), then progressively enhanced for tablets and desktops. Touch-friendly UI elements (min 44x44px tap targets). Responsive breakpoints: mobile (< 768px), tablet (768px - 1024px), desktop (> 1024px). Follow WCAG 2.1 AA accessibility standards. Use semantic HTML. Implement proper keyboard navigation and screen reader support. Offline capability considerations (service workers for PWA features).
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Technology Stack Requirements
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### Frontend
+- Next.js 14+ (App Router)
+- TypeScript 5+
+- Tailwind CSS for styling (with mobile breakpoints)
+- Shadcn/ui or similar component library (mobile-optimized)
+- React Hook Form for form handling
+- Zod for validation
+- Responsive design utilities (container queries, viewport units)
+- Mobile gesture support libraries if needed
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+### Backend & Database
+- Next.js API Routes (Route Handlers)
+- Vercel Postgres (or Vercel KV for simple data)
+- Prisma ORM or Drizzle ORM
+- NextAuth.js v5 for authentication
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### Deployment & Hosting
+- Vercel for hosting and deployment
+- Environment variables for sensitive data
+- Automatic deployments from main branch
+- Preview deployments for pull requests
+
+### Development Tools
+- ESLint and Prettier for code quality
+- Git for version control
+- pnpm or npm for package management
+
+## Core Features Requirements
+
+### User Authentication
+- Email/password authentication
+- Optional: OAuth providers (Google, GitHub)
+- Secure session management
+- Password reset functionality
+
+### Expense Management
+- Create, read, update, delete expenses
+- Categorization (food, transport, entertainment, etc.)
+- Amount, date, description, category fields
+- Optional: Receipt image upload (using Vercel Blob)
+
+### Income Tracking
+- Track income sources
+- Similar CRUD operations as expenses
+
+### Dashboard & Reports
+- Monthly/yearly summary views
+- Category-based spending breakdown
+- Visual charts (Chart.js or Recharts)
+- Balance calculation (income - expenses)
+
+### Data Export
+- Export data as CSV or JSON
+- Date range filtering for exports
+
+## Performance Standards
+
+- Lighthouse score: 90+ for Performance, Accessibility, Best Practices, SEO (tested on mobile)
+- First Contentful Paint (FCP) < 1.5s on mobile 4G
+- Time to Interactive (TTI) < 3.5s on mobile devices
+- Image optimization using Next.js Image component with responsive sizes
+- Implement loading states and skeleton screens
+- Use React Suspense for async operations
+- Bundle size optimization for mobile networks
+- Lazy loading for below-the-fold content
+- Minimize layout shifts (CLS < 0.1)
+
+## Mobile Responsiveness Requirements
+
+### Mandatory Mobile Features
+- All forms must be mobile-friendly with appropriate input types
+- Touch-optimized navigation (hamburger menu, bottom navigation)
+- Swipe gestures for common actions (delete, archive)
+- Pull-to-refresh functionality where applicable
+- Mobile-optimized data tables (card view on mobile)
+- Responsive charts and graphs
+- Mobile-friendly date/time pickers
+
+### Testing Requirements
+- Test on real devices (iOS and Android)
+- Chrome DevTools responsive mode testing
+- Viewport meta tag properly configured
+- No horizontal scrolling on any screen size
+- All text readable without zooming (min 16px base font)
+- Touch targets minimum 44x44px
+- Test with slow 3G network throttling
+
+### Progressive Web App (PWA) Features
+- Installable on mobile home screen
+- App manifest.json with icons and theme colors
+- Service worker for offline support (optional but recommended)
+- Add-to-homescreen prompt
+
+## Security Requirements
+
+- HTTPS only (enforced by Vercel)
+- Environment variables for all secrets
+- CSRF protection on forms
+- Rate limiting on API endpoints
+- SQL injection prevention via ORM
+- XSS protection (React's built-in escaping)
+- Secure headers configuration in next.config.js
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution defines the non-negotiable standards for the ExpenseTracker application. All code must comply with these principles before merging to main branch. 
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+Exceptions require:
+1. Documentation of rationale
+2. Technical lead approval
+3. Plan to eventually align with constitution
+
+Key rules:
+- All PRs must pass TypeScript compilation
+- All API routes must have authentication checks
+- Database migrations must be tested before deployment
+- Mobile responsiveness testing is MANDATORY before merging (test on mobile viewport)
+- All new UI components must be tested on mobile devices (real or emulator)
+- Accessibility issues are blocking bugs
+- Desktop-only features are not allowed (except admin tools with justification)
+
+**Version**: 1.0.0 | **Ratified**: 2025-12-17 | **Last Amended**: 2025-12-17
