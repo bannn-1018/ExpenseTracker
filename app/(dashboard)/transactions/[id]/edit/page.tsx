@@ -46,7 +46,7 @@ export default async function EditTransactionPage({
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </Link>
-          <h1 className="text-2xl font-bold">Chỉnh sửa giao dịch</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Chỉnh sửa giao dịch</h1>
         </div>
 
         <form action={deleteTransactionAction.bind(null, transactionId)}>

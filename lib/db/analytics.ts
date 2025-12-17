@@ -47,6 +47,11 @@ export async function getMonthlyTrends(
   userId: number,
   months: number = 6
 ): Promise<MonthlyTrend[]> {
+  // Calculate start date
+  const startDate = new Date()
+  startDate.setMonth(startDate.getMonth() - months)
+  const startDateStr = startDate.toISOString().split('T')[0]
+
   const { rows } = await sql`
     SELECT
       TO_CHAR(date, 'Mon') as month,
@@ -56,7 +61,7 @@ export async function getMonthlyTrends(
       SUM(CASE WHEN type = 'expense' THEN amount ELSE 0 END) as total_expense
     FROM transactions
     WHERE user_id = ${userId}
-      AND date >= CURRENT_DATE - INTERVAL '${months} months'
+      AND date >= ${startDateStr}
     GROUP BY EXTRACT(YEAR FROM date), EXTRACT(MONTH FROM date), TO_CHAR(date, 'Mon')
     ORDER BY year, month_num
   `

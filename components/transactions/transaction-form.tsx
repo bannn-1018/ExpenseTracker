@@ -67,19 +67,19 @@ export default function TransactionForm({ mode, categories, initialData }: Trans
           Số tiền *
         </label>
         <div className="relative">
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl font-bold text-gray-400">
+            ₫
+          </span>
           <input
             type="text"
             name="amount"
             value={formatCurrency(amount)}
             onChange={handleAmountChange}
             required
-            className="w-full px-4 py-3 text-2xl font-bold border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-right"
+            className="w-full pl-12 pr-4 py-3 text-2xl font-bold border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-left text-gray-900"
             placeholder="0"
           />
           <input type="hidden" name="amount" value={amount} />
-          <span className="absolute right-4 top-1/2 -translate-y-1/2 text-2xl font-bold text-gray-400">
-            ₫
-          </span>
         </div>
         {state.errors?.amount && (
           <p className="mt-1 text-sm text-red-600">{state.errors.amount[0]}</p>
@@ -133,7 +133,7 @@ export default function TransactionForm({ mode, categories, initialData }: Trans
           name="categoryId"
           required
           defaultValue={initialData?.categoryId}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900"
         >
           <option value="">Chọn danh mục</option>
           {currentCategories.map((category) => (
@@ -158,7 +158,7 @@ export default function TransactionForm({ mode, categories, initialData }: Trans
           name="date"
           required
           defaultValue={initialData?.date || new Date().toISOString().split('T')[0]}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900"
         />
         {state.errors?.date && (
           <p className="mt-1 text-sm text-red-600">{state.errors.date[0]}</p>
@@ -177,7 +177,7 @@ export default function TransactionForm({ mode, categories, initialData }: Trans
           required
           defaultValue={initialData?.name}
           placeholder="Ví dụ: Mua sắm tạp hóa"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900"
         />
         {state.errors?.name && (
           <p className="mt-1 text-sm text-red-600">{state.errors.name[0]}</p>
@@ -196,7 +196,7 @@ export default function TransactionForm({ mode, categories, initialData }: Trans
           defaultValue={initialData?.note || ''}
           placeholder="Thêm ghi chú (tùy chọn)"
           maxLength={200}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 resize-none"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 resize-none text-gray-900"
         />
         {state.errors?.note && (
           <p className="mt-1 text-sm text-red-600">{state.errors.note[0]}</p>

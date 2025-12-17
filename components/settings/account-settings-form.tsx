@@ -33,7 +33,7 @@ export function AccountSettingsForm({ settings }: AccountSettingsFormProps) {
           id="currency"
           name="currency"
           defaultValue={settings.currency}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-gray-900"
         >
           <option value="VND">VND - Việt Nam Đồng</option>
           <option value="USD">USD - US Dollar</option>
@@ -50,7 +50,7 @@ export function AccountSettingsForm({ settings }: AccountSettingsFormProps) {
           id="theme"
           name="theme"
           defaultValue={settings.theme}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-gray-900"
         >
           <option value="light">Sáng</option>
           <option value="dark">Tối</option>
@@ -67,7 +67,7 @@ export function AccountSettingsForm({ settings }: AccountSettingsFormProps) {
           id="language"
           name="language"
           defaultValue={settings.language}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-gray-900"
         >
           <option value="vi">Tiếng Việt</option>
           <option value="en">English</option>
@@ -83,7 +83,7 @@ export function AccountSettingsForm({ settings }: AccountSettingsFormProps) {
           id="date_format"
           name="date_format"
           defaultValue={settings.date_format}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-gray-900"
         >
           <option value="DD/MM/YYYY">DD/MM/YYYY (31/12/2024)</option>
           <option value="MM/DD/YYYY">MM/DD/YYYY (12/31/2024)</option>
@@ -127,7 +127,7 @@ export function AccountSettingsForm({ settings }: AccountSettingsFormProps) {
               id="notification_time"
               name="notification_time"
               defaultValue={settings.notification_time}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-gray-900"
             />
           </div>
         </div>

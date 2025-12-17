@@ -48,7 +48,7 @@ export default async function ReportsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Báo cáo & Phân tích</h1>
+        <h1 className="text-2xl font-bold text-gray-900">Báo cáo & Phân tích</h1>
         <p className="text-gray-600 mt-1">
           Theo dõi xu hướng và phân tích thói quen chi tiêu của bạn
         </p>

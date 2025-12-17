@@ -51,7 +51,7 @@ export default function SearchBar() {
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
         placeholder="Tìm kiếm giao dịch..."
-        className="block w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+        className="block w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900"
       />
       {searchValue && (
         <button
