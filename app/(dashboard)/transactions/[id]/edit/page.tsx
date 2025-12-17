@@ -4,7 +4,7 @@ import { getCategoriesByType } from '@/lib/db/categories'
 import { getTransactionById } from '@/lib/db/transactions'
 import TransactionForm from '@/components/transactions/transaction-form'
 import Link from 'next/link'
-import { deleteTransactionAction } from '@/app/actions/transaction-form'
+import DeleteTransactionButton from '@/components/transactions/delete-transaction-button'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -49,22 +49,7 @@ export default async function EditTransactionPage({
           <h1 className="text-2xl font-bold text-gray-900">Chỉnh sửa giao dịch</h1>
         </div>
 
-        <form action={deleteTransactionAction.bind(null, transactionId)}>
-          <button
-            type="submit"
-            className="text-red-600 hover:text-red-700 font-medium flex items-center gap-2"
-            onClick={(e) => {
-              if (!confirm('Bạn có chắc chắn muốn xóa giao dịch này?')) {
-                e.preventDefault()
-              }
-            }}
-          >
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-            </svg>
-            Xóa
-          </button>
-        </form>
+        <DeleteTransactionButton transactionId={transactionId} />
       </div>
 
       <div className="bg-white rounded-lg shadow p-6">
