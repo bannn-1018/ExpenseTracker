@@ -1,0 +1,232 @@
+# Expense Tracker
+
+Ứng dụng quản lý chi tiêu cá nhân được xây dựng với Next.js 14, TypeScript, và PostgreSQL.
+
+## 🎯 Features Đã Implement
+
+### ✅ 1. Authentication (Xác thực người dùng)
+- ✅ Đăng ký tài khoản với validation đầy đủ
+- ✅ Đăng nhập với NextAuth.js v5
+- ✅ Quên mật khẩu và đặt lại mật khẩu
+- ✅ Session management với JWT
+- ✅ Protected routes
+
+### ✅ 2. Dashboard (Tổng quan)
+- ✅ Tổng quan thu nhập, chi tiêu, số dư
+- ✅ Bộ lọc thời gian (Ngày, Tuần, Tháng, Năm)
+- ✅ Biểu đồ phân tích chi tiêu theo danh mục (Pie Chart)
+- ✅ Danh sách giao dịch gần đây
+- ✅ Summary cards với UI đẹp mắt
+
+### ✅ 3. Transactions List (Danh sách giao dịch)
+- ✅ Hiển thị danh sách giao dịch được nhóm theo ngày
+- ✅ Phân trang
+- ✅ UI responsive cho mobile và desktop
+- ✅ Click vào giao dịch để chỉnh sửa
+
+### 📝 4. Add/Edit Transaction (Đang implement)
+- Database functions và validation đã sẵn sàng
+- Cần implement UI form
+
+### 📊 5. Reports & Analysis (Chưa implement)
+- Sẽ có biểu đồ xu hướng theo tháng
+- Phân tích chi tiêu theo danh mục
+- Dự báo chi tiêu
+
+### ⚙️ 6. Settings & Categories (Chưa implement)
+- Quản lý danh mục
+- Cài đặt người dùng
+- Quản lý dữ liệu
+
+## 🗄️ Database Schema
+
+### Tables
+- `users` - Người dùng
+- `sessions` - Phiên đăng nhập
+- `password_reset_tokens` - Token đặt lại mật khẩu
+- `categories` - Danh mục thu chi
+- `transactions` - Giao dịch
+- `user_settings` - Cài đặt người dùng
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- PostgreSQL database (hoặc Vercel Postgres)
+- npm or yarn
+
+### Installation
+
+1. Clone repository và cài đặt dependencies:
+```bash
+npm install
+```
+
+2. Tạo file `.env.local` từ `.env.example`:
+```bash
+cp .env.example .env.local
+```
+
+3. Cấu hình environment variables trong `.env.local`:
+```env
+AUTH_SECRET=your-secret-key-here
+DATABASE_URL=your-database-url
+AUTH_URL=http://localhost:3000
+RESEND_API_KEY=your-resend-api-key
+```
+
+4. Generate AUTH_SECRET:
+```bash
+openssl rand -base64 32
+```
+
+5. Chạy database migration:
+```bash
+# Kết nối database và chạy file database/schema.sql
+```
+
+6. Seed categories:
+```bash
+npm run seed
+```
+
+7. Chạy development server:
+```bash
+npm run dev
+```
+
+8. Mở [http://localhost:3000](http://localhost:3000) trong browser.
+
+## 📁 Project Structure
+
+```
+├── app/
+│   ├── (auth)/                 # Auth pages
+│   │   ├── login/
+│   │   ├── register/
+│   │   └── reset-password/
+│   ├── (dashboard)/            # Dashboard pages
+│   │   ├── dashboard/
+│   │   ├── transactions/
+│   │   ├── reports/
+│   │   └── settings/
+│   ├── actions/                # Server actions
+│   │   └── auth.ts
+│   ├── api/
+│   │   └── auth/[...nextauth]/
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── components/
+│   ├── auth/                   # Auth components
+│   ├── dashboard/              # Dashboard components
+│   └── transactions/           # Transaction components
+├── lib/
+│   ├── db/                     # Database functions
+│   │   ├── types.ts
+│   │   ├── dashboard.ts
+│   │   ├── transactions.ts
+│   │   └── categories.ts
+│   ├── utils/                  # Utility functions
+│   │   ├── currency.ts
+│   │   └── date.ts
+│   └── validations/            # Zod schemas
+│       └── auth.ts
+├── database/
+│   └── schema.sql              # Database schema
+├── scripts/
+│   └── seed-categories.ts      # Seed script
+├── types/
+│   └── next-auth.d.ts
+├── auth.ts                     # NextAuth config
+└── package.json
+```
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Database**: PostgreSQL (Vercel Postgres)
+- **Authentication**: NextAuth.js v5
+- **Styling**: Tailwind CSS
+- **Charts**: Recharts
+- **Validation**: Zod
+- **Date Handling**: date-fns
+
+## 🎨 UI Components
+
+### Implemented
+- Summary Cards với icons và colors
+- Time Filter tabs
+- Category Breakdown Chart (Pie Chart)
+- Recent Transactions list
+- Transaction List với grouping by date
+- Navigation bar với responsive design
+- Loading skeletons
+
+### TODO
+- Transaction Form
+- Search Bar with debouncing
+- Filter Modal
+- Date Range Picker
+- Category Management UI
+- Settings UI
+
+## 📋 Next Steps
+
+1. **Complete Add/Edit Transaction Feature**
+   - Create transaction form with validation
+   - Implement category selector
+   - Date picker integration
+   - Amount input with formatting
+
+2. **Implement Search & Filter**
+   - Search bar với debouncing
+   - Filter modal với date range picker
+   - Category filter
+   - Type filter (income/expense)
+
+3. **Reports & Analysis**
+   - Monthly trend charts
+   - Category analysis
+   - Spending forecast
+   - Period comparison
+
+4. **Settings & Categories**
+   - Category management (CRUD)
+   - User settings
+   - Data export/import
+   - Account management
+
+5. **Additional Features**
+   - Budget tracking
+   - Recurring transactions
+   - Multi-currency support
+   - Dark mode
+   - Email notifications
+   - Data visualization improvements
+
+## 🔒 Security
+
+- Passwords được hash với bcryptjs
+- JWT tokens cho session management
+- Protected API routes
+- SQL injection protection với parameterized queries
+- CSRF protection với NextAuth
+
+## 📝 License
+
+MIT
+
+## 👥 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 🐛 Known Issues
+
+- Email sending chưa được implement (cần config RESEND_API_KEY)
+- Some features are still in development
+
+## 📞 Support
+
+For support, email your-email@example.com or create an issue in the repository.
