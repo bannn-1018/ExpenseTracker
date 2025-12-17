@@ -1,4 +1,8 @@
 import { sql } from '@vercel/postgres'
+import { config } from 'dotenv'
+
+// Load environment variables
+config({ path: '.env.local' })
 
 const expenseCategories = [
   { name: 'Ăn uống', icon: '🍜', color: '#ef4444', order: 1 },
