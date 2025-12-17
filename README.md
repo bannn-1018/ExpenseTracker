@@ -1,42 +1,47 @@
-# Expense Tracker
+# Expense Tracker - Ứng dụng Quản lý Chi tiêu
 
-Ứng dụng quản lý chi tiêu cá nhân được xây dựng với Next.js 14, TypeScript, và PostgreSQL.
+Ứng dụng quản lý chi tiêu cá nhân được xây dựng với Next.js 14, TypeScript, PostgreSQL và Tailwind CSS.
 
-## 🎯 Features Đã Implement
+## ✨ Tính năng (100% hoàn thành)
 
 ### ✅ 1. Authentication (Xác thực người dùng)
-- ✅ Đăng ký tài khoản với validation đầy đủ
-- ✅ Đăng nhập với NextAuth.js v5
-- ✅ Quên mật khẩu và đặt lại mật khẩu
+- ✅ Đăng ký tài khoản mới với validation đầy đủ
+- ✅ Đăng nhập/Đăng xuất với NextAuth.js v5
+- ✅ Quên mật khẩu và đặt lại mật khẩu qua email
 - ✅ Session management với JWT
-- ✅ Protected routes
+- ✅ Protected routes với middleware
 
 ### ✅ 2. Dashboard (Tổng quan)
 - ✅ Tổng quan thu nhập, chi tiêu, số dư
-- ✅ Bộ lọc thời gian (Ngày, Tuần, Tháng, Năm)
-- ✅ Biểu đồ phân tích chi tiêu theo danh mục (Pie Chart)
-- ✅ Danh sách giao dịch gần đây
-- ✅ Summary cards với UI đẹp mắt
+- ✅ Bộ lọc thời gian (Hôm nay, Tuần này, Tháng này, Tháng trước)
+- ✅ Biểu đồ tròn phân tích chi tiêu theo danh mục
+- ✅ Danh sách giao dịch gần đây (5 giao dịch)
+- ✅ Summary cards với UI đẹp mắt và responsive
 
-### ✅ 3. Transactions List (Danh sách giao dịch)
-- ✅ Hiển thị danh sách giao dịch được nhóm theo ngày
-- ✅ Phân trang
+### ✅ 3. Transactions (Quản lý giao dịch)
+- ✅ Hiển thị danh sách giao dịch nhóm theo ngày
+- ✅ Tìm kiếm giao dịch (debounced search)
+- ✅ Lọc theo loại, danh mục, khoảng thời gian
+- ✅ Phân trang với 10 giao dịch/trang
+- ✅ Thêm/Sửa/Xóa giao dịch với form validation
 - ✅ UI responsive cho mobile và desktop
-- ✅ Click vào giao dịch để chỉnh sửa
 
-### 📝 4. Add/Edit Transaction (Đang implement)
-- Database functions và validation đã sẵn sàng
-- Cần implement UI form
+### ✅ 4. Reports & Analysis (Báo cáo & Phân tích)
+- ✅ Biểu đồ xu hướng 6 tháng (thu/chi/số dư)
+- ✅ Top 10 danh mục chi tiêu với bar chart
+- ✅ Dự đoán chi tiêu cuối tháng với độ tin cậy
+- ✅ So sánh kỳ hiện tại vs kỳ trước (% thay đổi)
+- ✅ Insights tự động với phân tích chi tiết
 
-### 📊 5. Reports & Analysis (Chưa implement)
-- Sẽ có biểu đồ xu hướng theo tháng
-- Phân tích chi tiêu theo danh mục
-- Dự báo chi tiêu
-
-### ⚙️ 6. Settings & Categories (Chưa implement)
-- Quản lý danh mục
-- Cài đặt người dùng
-- Quản lý dữ liệu
+### ✅ 5. Settings & Categories (Cài đặt)
+- ✅ Quản lý danh mục tùy chỉnh (thêm/sửa/xóa)
+- ✅ Icon và color picker cho danh mục
+- ✅ Cài đặt đơn vị tiền tệ (VND/USD/EUR)
+- ✅ Cài đặt giao diện (Sáng/Tối/Tự động)
+- ✅ Cài đặt ngôn ngữ và định dạng ngày
+- ✅ Thiết lập thông báo nhắc nhở
+- ✅ Xuất dữ liệu
+- ✅ Xóa tài khoản với confirmation
 
 ## 🗄️ Database Schema
 

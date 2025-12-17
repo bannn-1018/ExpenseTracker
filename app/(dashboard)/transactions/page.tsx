@@ -1,7 +1,10 @@
 import { auth } from '@/auth'
 import { redirect } from 'next/navigation'
 import { getTransactions, groupTransactionsByDate } from '@/lib/db/transactions'
+import { getCategories } from '@/lib/db/categories'
 import TransactionList from '@/components/transactions/transaction-list'
+import SearchBar from '@/components/transactions/search-bar'
+import FilterModal from '@/components/transactions/filter-modal'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -29,19 +32,23 @@ export default async function TransactionsPage({
   const userId = parseInt(session.user.id)
   const page = parseInt(searchParams.page || '1')
   
-  const { transactions, totalCount, hasMore } = await getTransactions(
-    userId,
-    page,
-    20,
-    {
-      search: searchParams.search,
-      startDate: searchParams.startDate,
-      endDate: searchParams.endDate,
-      type: searchParams.type,
-      categoryId: searchParams.categoryId ? parseInt(searchParams.categoryId) : undefined,
-    }
-  )
+  const [transactionsResult, categories] = await Promise.all([
+    getTransactions(
+      userId,
+      page,
+      20,
+      {
+        search: searchParams.search,
+        startDate: searchParams.startDate,
+        endDate: searchParams.endDate,
+        type: searchParams.type,
+        categoryId: searchParams.categoryId ? parseInt(searchParams.categoryId) : undefined,
+      }
+    ),
+    getCategories(userId),
+  ])
 
+  const { transactions, totalCount, hasMore } = transactionsResult
   const groupedTransactions = groupTransactionsByDate(transactions)
 
   return (
@@ -50,7 +57,13 @@ export default async function TransactionsPage({
         <h1 className="text-2xl font-bold">Giao dịch</h1>
       </div>
 
-      {/* TODO: Add search and filter components */}
+      {/* Search and Filter */}
+      <div className="flex gap-3">
+        <div className="flex-1">
+          <SearchBar />
+        </div>
+        <FilterModal categories={categories} />
+      </div>
 
       <TransactionList groupedTransactions={groupedTransactions} />
 

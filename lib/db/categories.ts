@@ -38,6 +38,15 @@ export async function getCategoriesByType(userId: number): Promise<{
   return { income, expense }
 }
 
+export async function getCategoriesByUserId(userId: number): Promise<Category[]> {
+  const { rows } = await sql<Category>`
+    SELECT * FROM categories
+    WHERE (user_id = ${userId} OR user_id IS NULL)
+    ORDER BY type, display_order, name
+  `
+  return rows
+}
+
 export async function getCategoryById(
   userId: number,
   categoryId: number
