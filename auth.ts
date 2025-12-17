@@ -1,17 +1,20 @@
 import NextAuth from 'next-auth'
-import Credentials from 'next-auth/providers/credentials'
+import type { NextAuthConfig } from 'next-auth'
 import bcrypt from 'bcryptjs'
 import { sql } from '@vercel/postgres'
 import type { User } from './lib/db/types'
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
-    Credentials({
+    {
+      id: 'credentials',
+      name: 'Credentials',
+      type: 'credentials',
       credentials: {
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
       },
-      authorize: async (credentials) => {
+      authorize: async (credentials: Record<string, unknown> | undefined) => {
         if (!credentials?.email || !credentials?.password) {
           return null
         }
@@ -51,7 +54,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           return null
         }
       },
-    }),
+    },
   ],
   pages: {
     signIn: '/login',

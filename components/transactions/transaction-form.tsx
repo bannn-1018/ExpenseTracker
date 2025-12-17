@@ -45,7 +45,7 @@ export default function TransactionForm({ mode, categories, initialData }: Trans
     ? createTransactionAction 
     : updateTransactionAction.bind(null, initialData!.id)
 
-  const [state, formAction] = useFormState<TransactionFormState>(action, {})
+  const [state, formAction] = useFormState(action, {})
 
   const currentCategories = type === 'income' ? categories.income : categories.expense
 
