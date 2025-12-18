@@ -16,8 +16,7 @@ export default function DeleteTransactionButton({ transactionId }: DeleteTransac
     }
 
     setIsDeleting(true)
-    const formData = new FormData()
-    await deleteTransactionAction(transactionId, formData)
+    await deleteTransactionAction(transactionId)
   }
 
   return (
